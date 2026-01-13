@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+    <link rel="stylesheet" href="SeatingStyle.css">
+</head>
+<body>
+
+    <div id="userinputdiv">
+        <input type="number" id="tableCount" placeholder="Number of tables">
+        <input type="number" id="fronttableinput" placeholder="Number of front tables">
+        <input type="number" id="numStudentsatable" placeholder="Students per table">
+
+        <button id="submitBtn" class="button">Make Tables (click here before sorting)</button>
+        <br>
+        <input type="file" id="fileInput" accept=".csv">
+        <button id="submitfilebutton" class="button">Sort</button>
+        <p>reload page to reset</p>
+    </div>
+    
+    <div id="container"></div>
+
+    <script src="Seatings.js"></script>
+</body>
+</html>

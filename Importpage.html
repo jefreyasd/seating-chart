@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seating Chart Maker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="Importpage.css"> 
+</head>
+
+<body>
+  <div class="x">
+    <div id="TOPHALF">
+      <h1>Seating Chart Program</h1>
+    </div>
+
+    <div id="BOTTOMHALF">
+      <button class="button" id="importclassesbutton">Import from Google Classroom</button>
+      <button class="button" id="ManualButton">Manual Entry</button>
+      
+      <div id="status-msg"></div>
+    </div>
+    
+    <div id="classroom-data"></div>
+  </div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <script src="Importpage.js"></script>
+
+</body>
+</html>
