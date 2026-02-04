@@ -154,19 +154,44 @@ function sorting() {
         tables[i] = [];
     }
 
-    let students = sortingdata.map(s => ({
-        name: s[0],
-        like: s[1] ? s[1].trim() : "",
-        dislike: s[2] ? s[2].trim() : "",
-        vision: s[3] ? s[3].trim().toUpperCase() : "FALSE",
-        assigned: false
-    }));
+    let students = [];
 
+    for (let s of sortingdata) {
+        let named = s[0];
+        let likes = "";
+        let dislike = "";
+        let see = "FALSE";
+
+        if (s[1]) {
+            likes = s[1].trim();
+        } else {
+            likes = "";
+        }
+        if (s[2]) {
+            dislike = s[2].trim();
+        } else {
+            dislike = "";
+        }
+
+        if (s[3]) {
+            see = s[3].trim().toUpperCase();
+        } else {
+            see = "FALSE";
+        }
+        students.push({
+            name: named,
+            like: likes,
+            dislike: dislike,
+            vision: see,
+            assigned: false
+        });
+    }
+    
     let maxstudents = Number(inputnumstudents.value);
     let fronttables = Number(inputfronttable.value);
 //checks if the student can sit at the table
-    function canSit(student, tableIdx) {
-        for (let seatedName of tables[tableIdx]) {
+    function canSit(student, idoftable) {
+        for (let seatedName of tables[idoftable]) {
             if (student.dislike === seatedName) return false;
             let seatedObj = students.find(s => s.name === seatedName);
             if (seatedObj && seatedObj.dislike === student.name) return false;
@@ -239,9 +264,9 @@ function sorting() {
         let liststudentinconatnor = document.getElementById("table-display-" + i);
         if (liststudentinconatnor) {
                 liststudentinconatnor.innerHTML = "";
-            for (let studentName of tables[i]) {
+            for (let named of tables[i]) {
                 let namediv = document.createElement("div");
-                namediv.innerText = studentName;
+                namediv.innerText = named;
                 liststudentinconatnor.appendChild(namediv);
             }
         }
