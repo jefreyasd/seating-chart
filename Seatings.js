@@ -19,7 +19,7 @@ function createTable(i) {
     const tablenames = document.createElement("table");
     tablenames.classList.add("tablenames");
     tablenames.id = "table-display-" + i; 
-
+    tablenames.style.margin = "15px";
     table.appendChild(tablenames)
     container.appendChild(table);
     applyDragToElement(table);
