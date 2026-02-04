@@ -26,7 +26,7 @@ body {
   position: absolute; 
 }
 .button {
-  background-color: #4285F4; /* Google Blue */
+  background-color: #4285F4; 
   color: white;
   border: none;
   padding: 5px 20px;
