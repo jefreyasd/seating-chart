@@ -17,19 +17,22 @@ function createTable(i) {
     table.classList.add('tables');
     table.style.position = "absolute"; 
     table.innerText = `Table ${i + 1}`;
-    table.style.left = (20 + (i * 10)) + 'px';
-    table.style.top = (20 + (i * 10)) + 'px';
-
+    const horizontalSpacing = 150; 
+    const verticalSpacing = 200;
+    const startX = 50;
+    const startY = 50;
+    let col = Math.floor(i / 2);
+    let row = i % 2;
+    table.style.left = (startX + (col * horizontalSpacing)) + 'px';
+    table.style.top = (startY + (row * verticalSpacing)) + 'px';
     const tablenames = document.createElement("table");
     tablenames.classList.add("tablenames");
     tablenames.id = "table-display-" + i; 
     tablenames.style.margin = "15px";
-
     table.appendChild(tablenames);
     container.appendChild(table);
     applyDragToElement(table);
 }
-
 //allows the tables to be dragged
 function applyDragToElement(table) {
     let drag = false;
