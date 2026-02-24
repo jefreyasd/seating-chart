@@ -1,8 +1,45 @@
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+#home{
+  margin-right: auto;
+  font-weight: bold;
+}
+#topbar{
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 50px; 
+  background-color: #f0f0f0;
+  flex-shrink: 0;
+  text-align: right;
+  display: flex;
+  align-items: center;     
+  justify-content: flex-end; 
+
+}
+#title{
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}
+
+.links{
+  margin:20px;
+  text-decoration: none;
+  color: #5a738c;
+}
+#preferences{
+  color: #E67E22;
+}
+
+.main {
+  font-family: 'Roboto', sans-serif;
   background-color: lightblue; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 }
 .button {
   background-color: #4285F4; /* Google Blue */
@@ -16,5 +53,10 @@ body {
   transition: background-color 0.3s, transform 0.1s;
   font-weight: 500;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  margin: 10px
+  
+}
+#Bottomhalf {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
 }
