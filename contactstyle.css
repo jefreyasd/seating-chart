@@ -24,4 +24,17 @@ html, body {
 #BOTTOMHALF {
   height: 50%;
   background: white;
+  text-align: center;
+}
+.button {
+  background-color: #4285F4; 
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 250px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
