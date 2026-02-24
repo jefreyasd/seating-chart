@@ -10,24 +10,45 @@
 </head>
 
 <body>
+  <div id="topbar">
+    <a href="index.html" class="links" id = "home">Seating Chart Program</a>
+    <a href="Contactpage.html" class="links" id = "contact">Contactpage</a>
+    <a href="Importpage.html"class="links" id ="import">Importpage</a>
+    <a href="Preferences.html"class="links" id = "preferences">Preferences</a>
+    <a href="Seatings.html"class="links" id ="seatings">Seatings</a>
+  </div>
   <div class="x">
+    
     <div id="TOPHALF">
-      <h1>Seating Chart Program</h1>
+      
+      <h1 id = "title">Seating Chart Program</h1>
     </div>
 
+
+
+    
     <div id="BOTTOMHALF">
       <button class="button" id="importclassesbutton">Import from Google Classroom</button>
       <button class="button" id="ManualButton">Manual Entry</button>
-      <a href="Seatings.html">
-          <button>If you got the file already</button>
+      <a href="Seatings.html" >
+          <button class="button">If you got the file already</button>
       </a>
-      
       <div id="status-msg"></div>
     </div>
     
     <div id="classroom-data"></div>
   </div>
 
+
+
+
+
+
+
+
+
+
+  
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <script src="https://apis.google.com/js/api.js"></script>
