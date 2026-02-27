@@ -111,6 +111,10 @@ async function runSeatingLogic() {
         window.prompt("please use a valid file (name strats with roster(api) or roster(manual)) and make sure if it is a manual file that it is a json file and is a list of names")
         return;
     }
+    
+    let studentNames = rawNames.filter((name, index) => {
+    return rawNames.indexOf(name) === index;});
+
     studentNames.sort();
     if (studentNames.length > 0) {
         await createSeatingChartForm(accessToken, studentNames);
