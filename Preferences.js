@@ -79,8 +79,6 @@ async function createSeatingChartForm(authClient, studentNames) {
         headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(updateRequest)
     });
-
-    console.log(`Share this URL with students: ${formUrl}`);
     alert("Form Created: " + formUrl);
     return formUrl;
 }
@@ -98,24 +96,22 @@ async function runSeatingLogic() {
     const text = await file.text();
     let data = JSON.parse(text);
     let studentNames = [];
-    if (filename.startsWith("roster(api)")) {
+    if (filename.includes("api")) {
         for (let i = 0; i < data.length; i++) {
             studentNames.push(data[i].fullName);
         }
-    }
-    else if (filename.startsWith("roster(manual)")) {
-        for (let i = 0; i < data.length; i++)
+    } else if (filename.includes("manual")) {
+        for (let i = 0; i < data.length; i++) {
             studentNames.push(data[i]);
+        }
     }
     else {
         window.prompt("please use a valid file (name strats with roster(api) or roster(manual)) and make sure if it is a manual file that it is a json file and is a list of names")
         return;
     }
-    
-    let studentNames = rawNames.filter((name, index) => {
-    return rawNames.indexOf(name) === index;});
-
+    studentNames = [...new Set(studentNames)];
     studentNames.sort();
+    console.log(studentNames)
     if (studentNames.length > 0) {
         await createSeatingChartForm(accessToken, studentNames);
         window.location.href = 'Seatings.html'
