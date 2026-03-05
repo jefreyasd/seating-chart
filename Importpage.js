@@ -132,8 +132,7 @@ async function listStudents(courseId, courseName) {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.location.href = "Seatings.html"
-      window.location.replace('Preferences.html')
+      window.location.href = "Preferences.html"
     }
     
   } catch (err) {
