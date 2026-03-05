@@ -73,28 +73,33 @@ let button = document.getElementById("submitfilebutton");
 let sortingdata;
 
 button.onclick = function() {
-    const file = inputpref.files[0];
-    if(!file) { alert("select a file"); return; }
-
-    const reader = new FileReader();
-    const filename = String(file.name);
-//check if the file is a roster file so then no sorting is needed
-    if (filename.startsWith("roster(manual)") || filename.startsWith("roster(api)")){
-        runSeatingLogic();
-        return; 
-    }
-
-    reader.onload = function(e){
-        const text = e.target.result;  
-        const lines = text.split('\n');
-        const data = [];
-
-        for (let i = 0; i < lines.length; i++) {
-            data.push(lines[i].split(','));
+    try{
+        const file = inputpref.files[0];
+        if(!file) {window.alert("select a file"); return; }
+    
+        const reader = new FileReader();
+        const filename = String(file.name);
+    //check if the file is a roster file so then no sorting is needed
+        if (filename.startsWith("roster(manual)") || filename.startsWith("roster(api)")){
+            runSeatingLogic();
+            return; 
         }
-        sortingdata = maketable(data);
-        sorting();
-    };
+    
+        reader.onload = function(e){
+            const text = e.target.result;  
+            const lines = text.split('\n');
+            const data = [];
+    
+            for (let i = 0; i < lines.length; i++) {
+                data.push(lines[i].split(','));
+            }
+            sortingdata = maketable(data);
+            sorting();
+        }
+    }catch{
+        window.alert("an error has occured")
+    }
+    
 
     function maketable(data){
         let gooddata = [];
