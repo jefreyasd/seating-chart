@@ -93,6 +93,11 @@ button.onclick = function() {
 async function runSeatingLogic() {
     const file = input.files[0];
     const filename = String(file.name);
+    if (!filename.includes("api") && !filename.includes("manual")) {
+        window.alert("Please use a valid file. Name must include 'api' or 'manual'.");
+        return;
+    }
+    
     const text = await file.text();
     let data = JSON.parse(text);
     let studentNames = [];
@@ -104,10 +109,6 @@ async function runSeatingLogic() {
         for (let i = 0; i < data.length; i++) {
             studentNames.push(data[i]);
         }
-    }
-    else {
-        window.prompt("please use a valid file (name strats with roster(api) or roster(manual)) and make sure if it is a manual file that it is a json file and is a list of names")
-        return;
     }
     studentNames = [...new Set(studentNames)];
     studentNames.sort();
