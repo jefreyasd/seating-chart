@@ -93,14 +93,16 @@ button.onclick = function() {
 async function runSeatingLogic() {
     const file = input.files[0];
     const filename = String(file.name);
+    if(!file) {window.alert("Please enter a valid file")}
     if (!filename.includes("api") && !filename.includes("manual")) {
-        window.alert("Please use a valid file. Name must include 'api' or 'manual'.");
+        window.alert("Please use a valid file. Name must have 'api' or 'manual'.");
         return;
     }
     
     const text = await file.text();
     let data = JSON.parse(text);
     let studentNames = [];
+    
     if (filename.includes("api")) {
         for (let i = 0; i < data.length; i++) {
             studentNames.push(data[i].fullName);
