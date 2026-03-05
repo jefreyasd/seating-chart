@@ -92,8 +92,9 @@ button.onclick = function() {
 };
 async function runSeatingLogic() {
     const file = input.files[0];
-    const filename = String(file.name);
     if(!file) {window.alert("Please enter a valid file")}
+
+    const filename = String(file.name);
     if (!filename.includes("api") && !filename.includes("manual")) {
         window.alert("Please use a valid file. Name must have 'api' or 'manual'.");
         return;
