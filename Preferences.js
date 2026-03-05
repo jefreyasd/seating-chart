@@ -91,35 +91,43 @@ button.onclick = function() {
     }
 };
 async function runSeatingLogic() {
-    const file = input.files[0];
-    if(!file) {window.alert("Please enter a valid file")}
+    try{
+        const file = input.files[0];
+        if(!file) {
+            window.alert("Please enter a file")
+            return
+        }
 
-    const filename = String(file.name);
-    if (!filename.includes("api") && !filename.includes("manual")) {
-        window.alert("Please use a valid file. Name must have 'api' or 'manual'.");
-        return;
-    }
-    
-    const text = await file.text();
-    let data = JSON.parse(text);
-    let studentNames = [];
-    
-    if (filename.includes("api")) {
-        for (let i = 0; i < data.length; i++) {
-            studentNames.push(data[i].fullName);
+        const filename = String(file.name);
+        if (!filename.includes("api") && !filename.includes("manual")) {
+            window.alert("Please use a valid file. Name must have 'api' or 'manual'.");
+            return;
         }
-    } else if (filename.includes("manual")) {
-        for (let i = 0; i < data.length; i++) {
-            studentNames.push(data[i]);
+
+        const text = await file.text();
+        let data = JSON.parse(text);
+        let studentNames = [];
+
+        if (filename.includes("api")) {
+            for (let i = 0; i < data.length; i++) {
+                studentNames.push(data[i].fullName);
+            }
+        } else if (filename.includes("manual")) {
+            for (let i = 0; i < data.length; i++) {
+                studentNames.push(data[i]);
+            }
         }
+        studentNames = [...new Set(studentNames)];
+        studentNames.sort();
+        console.log(studentNames)
+        if (studentNames.length > 0) {
+            await createSeatingChartForm(accessToken, studentNames);
+            window.location.href = 'Seatings.html'
+        }
+    }catch (error){
+        window.alert("an error has occured")
     }
-    studentNames = [...new Set(studentNames)];
-    studentNames.sort();
-    console.log(studentNames)
-    if (studentNames.length > 0) {
-        await createSeatingChartForm(accessToken, studentNames);
-        window.location.href = 'Seatings.html'
-    }
+
 };
 //no preferences button
 let noprefbutton = document.getElementById("noprefbutton")
