@@ -95,7 +95,10 @@ button.onclick = function() {
             }
             sortingdata = maketable(data);
             sorting();
+
         }
+        reader.readAsText(file);
+
     }catch{
         window.alert("an error has occured")
     }
@@ -110,7 +113,6 @@ button.onclick = function() {
         }
         return gooddata;
     }
-    reader.readAsText(file);
 }
 //this is to parse the json file so i can use it
 async function runSeatingLogic() {
